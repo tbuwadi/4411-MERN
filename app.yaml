@@ -1,5 +1,3 @@
 runtime: nodejs14
-dispatch:
-  - url: '*/api/*'
 service: api
 
