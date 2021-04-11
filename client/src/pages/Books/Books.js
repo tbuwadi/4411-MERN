@@ -55,20 +55,20 @@ class Books extends Component {
 				<Row>
 					<Col size="md-6">
 						<Jumbotron>
-							<h1>What Books Should I Read?</h1>
+							<h1>Add to shopping List</h1>
 						</Jumbotron>
 						<form>
 							<Input
 								value={this.state.title}
 								onChange={this.handleInputChange}
 								name="title"
-								placeholder="Title (required)"
+								placeholder="item"
 							/>
 							<Input
 								value={this.state.author}
 								onChange={this.handleInputChange}
 								name="author"
-								placeholder="Author (required)"
+								placeholder="quantity"
 							/>
 
 							<FormBtn
@@ -81,7 +81,7 @@ class Books extends Component {
 					</Col>
 					<Col size="md-6 sm-12">
 						<Jumbotron>
-							<h1>Books On My List</h1>
+							<h1>My list:</h1>
 						</Jumbotron>
 						{this.state.books.length ? (
 							<List>
@@ -89,7 +89,7 @@ class Books extends Component {
 									<ListItem key={book._id}>
 										<Link to={'/books/' + book._id}>
 											<strong>
-												{book.title} by {book.author}
+												{book.title} x {book.author}
 											</strong>
 										</Link>
 										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
