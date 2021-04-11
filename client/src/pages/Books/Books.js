@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../../components/Grid';
 import { List, ListItem } from '../../components/List';
 import { Input, FormBtn } from '../../components/Form';
+import './Books.css'
 
 class Books extends Component {
 	state = {
@@ -51,11 +52,12 @@ class Books extends Component {
 
 	render() {
 		return (
+			<div className="wrapper">
 			<Container fluid>
 				<Row>
 					<Col size="md-6">
 						<Jumbotron>
-							<h1>Add to shopping List</h1>
+							<h1 className="title">Shopping List</h1>
 						</Jumbotron>
 						<form>
 							<Input
@@ -63,30 +65,33 @@ class Books extends Component {
 								onChange={this.handleInputChange}
 								name="title"
 								placeholder="item"
+								className="inputField"
 							/>
 							<Input
 								value={this.state.author}
 								onChange={this.handleInputChange}
 								name="author"
 								placeholder="quantity"
+								className="inputField"
 							/>
 
 							<FormBtn
 								disabled={!(this.state.author && this.state.title)}
 								onClick={this.handleFormSubmit}
+								className="buttonSubmit"
 							>
-								Submit Book
+								Add to List
 							</FormBtn>
 						</form>
 					</Col>
 					<Col size="md-6 sm-12">
 						<Jumbotron>
-							<h1>My list:</h1>
+							<h1 className="title">My List</h1>
 						</Jumbotron>
 						{this.state.books.length ? (
 							<List>
 								{this.state.books.map(book => (
-									<ListItem key={book._id}>
+									<ListItem key={book._id} className="list">
 										<Link to={'/books/' + book._id}>
 											<strong>
 												{book.title} x {book.author}
@@ -102,6 +107,7 @@ class Books extends Component {
 					</Col>
 				</Row>
 			</Container>
+			</div>
 		);
 	}
 }
