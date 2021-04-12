@@ -17,5 +17,8 @@ yarn build
 
 - deploy new version to google CLOUD
 open windows terminal
-gcloud app deploy (in client folder and in backend if changes made in both)
+cd client
+gcloud app deploy 
+cd ..
+gcloud app deploy
 gcloud app browse (to see the webapp)
