@@ -1,7 +1,6 @@
 const Item = require('../models/Items');
 
-// Defining all methods and business logic for routes
-
+//routing for API
 module.exports = {
 	findAll: function(req, res) {
 		Item.find(req.query)
