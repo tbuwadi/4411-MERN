@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body{
+    background-color: #F9F9FF;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+.wrapper{
+    
+}
+.title{
+    color: #000739;
+    margin-top: 50px;
+}
+
+.inputField{
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ABAFE0;
+    margin-bottom: 5px;
+    width: 270px;
+    font-weight: bold;
+}
+
+.buttonSubmit{
+    background-color: #c6cbf8;
+    color: #000739;
+    margin-top: 10px;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 290px;
+}
+

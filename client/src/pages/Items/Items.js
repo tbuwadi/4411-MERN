@@ -6,28 +6,28 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../../components/Grid';
 import { List, ListItem } from '../../components/List';
 import { Input, FormBtn } from '../../components/Form';
-import './Books.css'
+import './Items.css'
 
-class Books extends Component {
+class Items extends Component {
 	state = {
-		books: [],
-		title: '',
-		author: ''
+		items: [],
+		item: '',
+		quantity: ''
 	};
 
 	componentDidMount() {
-		this.loadBooks();
+		this.loadItems();
 	}
 
-	loadBooks = () => {
-		API.getBooks()
-			.then(res => this.setState({ books: res.data, title: '', author: '' }))
+	loadItems = () => {
+		API.getItems()
+			.then(res => this.setState({ items: res.data, item: '', quantity: '' }))
 			.catch(err => console.log(err));
 	};
 
-	deleteBook = id => {
-		API.deleteBook(id)
-			.then(res => this.loadBooks())
+	deleteItem = id => {
+		API.deleteItem(id)
+			.then(res => this.loadItems())
 			.catch(err => console.log(err));
 	};
 
@@ -40,12 +40,12 @@ class Books extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		if (this.state.title && this.state.author) {
-			API.saveBook({
-				title: this.state.title,
-				author: this.state.author
+		if (this.state.item && this.state.quantity) {
+			API.saveItem({
+				item: this.state.item,
+				quantity: this.state.quantity
 			})
-				.then(res => this.loadBooks())
+				.then(res => this.loadItems())
 				.catch(err => console.log(err));
 		}
 	};
@@ -57,26 +57,26 @@ class Books extends Component {
 				<Row>
 					<Col size="md-6">
 						<Jumbotron>
-							<h1 className="title">My Shopping List</h1>
+							<h1 className="title">Shopping List</h1>
 						</Jumbotron>
 						<form>
 							<Input
-								value={this.state.title}
+								value={this.state.item}
 								onChange={this.handleInputChange}
-								name="title"
+								name="item"
 								placeholder="item"
 								className="inputField"
 							/>
 							<Input
-								value={this.state.author}
+								value={this.state.quantity}
 								onChange={this.handleInputChange}
-								name="author"
+								name="quantity"
 								placeholder="quantity"
 								className="inputField"
 							/>
 
 							<FormBtn
-								disabled={!(this.state.author && this.state.title)}
+								disabled={!(this.state.quantity && this.state.item)}
 								onClick={this.handleFormSubmit}
 								className="buttonSubmit"
 							>
@@ -88,16 +88,16 @@ class Books extends Component {
 						<Jumbotron>
 							<h1 className="title">My List</h1>
 						</Jumbotron>
-						{this.state.books.length ? (
+						{this.state.items.length ? (
 							<List>
-								{this.state.books.map(book => (
-									<ListItem key={book._id} className="list">
-										<Link to={'/books/' + book._id}>
+								{this.state.items.map(item => (
+									<ListItem key={item._id} className="list">
+										<Link to={'/items/' + item._id}>
 											<strong>
-												{book.title} x {book.author}
+												{item.item} x {item.quantity}
 											</strong>
 										</Link>
-										<DeleteBtn onClick={() => this.deleteBook(book._id)} />
+										<DeleteBtn onClick={() => this.deleteItem(item._id)} />
 									</ListItem>
 								))}
 							</List>
@@ -112,4 +112,4 @@ class Books extends Component {
 	}
 }
 
-export default Books;
+export default Items;
