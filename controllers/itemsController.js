@@ -26,7 +26,7 @@ module.exports = {
 	remove: function(req, res) {
 		Item.findById({ _id: req.params.id })
 			.then(item => item.remove())
-			.then(allitem => res.json(allitem))
+			.then(allitems => res.json(allitems))
 			.catch(err => res.status(422).json(err));
 	}
 };
