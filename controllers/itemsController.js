@@ -1,32 +1,32 @@
-const Book = require('../models/Books');
+const Item = require('../models/Items');
 
 // Defining all methods and business logic for routes
 
 module.exports = {
 	findAll: function(req, res) {
-		Book.find(req.query)
-			.then(books => res.json(books))
+		Item.find(req.query)
+			.then(items => res.json(items))
 			.catch(err => res.status(422).json(err));
 	},
 	findById: function(req, res) {
-		Book.findById(req.params.id)
-			.then(book => res.json(book))
+		Item.findById(req.params.id)
+			.then(item => res.json(item))
 			.catch(err => res.status(422).json(err));
 	},
 	create: function(req, res) {
-		Book.create(req.body)
-			.then(newBook => res.json(newBook))
+		Item.create(req.body)
+			.then(newItem => res.json(newItem))
 			.catch(err => res.status(422).json(err));
 	},
 	update: function(req, res) {
-		Book.findOneAndUpdate({ _id: req.params.id }, req.body)
-			.then(book => res.json(book))
+		Item.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.then(item => res.json(item))
 			.catch(err => res.status(422).json(err));
 	},
 	remove: function(req, res) {
-		Book.findById({ _id: req.params.id })
-			.then(book => book.remove())
-			.then(allbooks => res.json(allbooks))
+		Item.findById({ _id: req.params.id })
+			.then(item => item.remove())
+			.then(allitem => res.json(allitem))
 			.catch(err => res.status(422).json(err));
 	}
 };
