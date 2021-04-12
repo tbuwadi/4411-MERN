@@ -22,3 +22,8 @@ gcloud app deploy
 cd ..
 gcloud app deploy
 gcloud app browse (to see the webapp)
+
+*** RUN LOCALLY
+npm run start
+cd client
+npm start
