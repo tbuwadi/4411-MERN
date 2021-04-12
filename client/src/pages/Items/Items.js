@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DeleteBtn from '../../components/DeleteBtn';
 import Jumbotron from '../../components/Jumbotron';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../../components/Grid';
 import { List, ListItem } from '../../components/List';
 import { Input, FormBtn } from '../../components/Form';
@@ -15,10 +14,11 @@ class Items extends Component {
 		quantity: ''
 	};
 
+
+//when component mounts, load all items in the database
 	componentDidMount() {
 		this.loadItems();
 	}
-
 	loadItems = () => {
 		API.getItems()
 			.then(res => this.setState({ items: res.data, item: '', quantity: '' }))
@@ -29,13 +29,6 @@ class Items extends Component {
 		API.deleteItem(id)
 			.then(res => this.loadItems())
 			.catch(err => console.log(err));
-	};
-
-	handleInputChange = event => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
 	};
 
 	handleFormSubmit = event => {
@@ -50,6 +43,16 @@ class Items extends Component {
 		}
 	};
 
+	handleInputChange = event => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+	
+
+//render add item form
 	render() {
 		return (
 			<div className="wrapper">
@@ -57,7 +60,7 @@ class Items extends Component {
 				<Row>
 					<Col size="md-6">
 						<Jumbotron>
-							<h1 className="title">Shopping List</h1>
+							<h1 className="title">Add to Shopping List</h1>
 						</Jumbotron>
 						<form>
 							<Input
@@ -86,17 +89,17 @@ class Items extends Component {
 					</Col>
 					<Col size="md-6 sm-12">
 						<Jumbotron>
-							<h1 className="title">My List</h1>
+							<h1 className="title">My Shopping List</h1>
 						</Jumbotron>
 						{this.state.items.length ? (
 							<List>
 								{this.state.items.map(item => (
 									<ListItem key={item._id} className="list">
-										<Link to={'/items/' + item._id}>
+										
 											<strong>
 												{item.item} x {item.quantity}
 											</strong>
-										</Link>
+										
 										<DeleteBtn onClick={() => this.deleteItem(item._id)} />
 									</ListItem>
 								))}
