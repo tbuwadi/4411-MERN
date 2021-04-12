@@ -57,7 +57,7 @@ class Books extends Component {
 				<Row>
 					<Col size="md-6">
 						<Jumbotron>
-							<h1 className="title">Shopping List</h1>
+							<h1 className="title">My Shopping List</h1>
 						</Jumbotron>
 						<form>
 							<Input
