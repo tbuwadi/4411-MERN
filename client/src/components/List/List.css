@@ -31,8 +31,11 @@
   border-bottom: none;
 } */
 ul.list-group{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 300px;
-
+  padding: 0;
 }
 .list-group-item{
   background-color: #F2F3FF;
@@ -44,3 +47,4 @@ a{
   color: #212E78;
   text-decoration: none;
 }
+       
